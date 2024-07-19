@@ -14,7 +14,7 @@ To use this project, follow these steps:
 
 #### Running by Visual Studio
 
-1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 2. Open the solution in Visual Studio: `NumberToWords.sln`
 3. Open the Solution Explorer by navigating to **View** > **Solution Explorer**.
 4. click right button on NumberToWordsTestByConsole project(third project) and select **Set as Startup Project**
@@ -24,7 +24,7 @@ To use this project, follow these steps:
 #### Running by Command Prompt
 
 1. Open Command Prompt
-2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 3. Redirect to NumberToWords project directory by this command: `cd NumberToWords\NumberToWordsTestByConsole`
 4. Build and run the project: `dotnet run`
 5. Input currency number and then will get output converted words.

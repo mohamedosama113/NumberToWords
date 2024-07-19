@@ -23,7 +23,7 @@ To use this project, run this project and simply send a request to the API endpo
 
 #### Running by Visual Studio
 
-1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 2. Open the solution in Visual Studio: `NumberToWords.sln`
 3. Open the Solution Explorer by navigating to **\*View** > **Solution Explorer**.
 4. click right button on NumberToWords project(the first project on picture) and select **Set as Startup Project**
@@ -33,7 +33,7 @@ To use this project, run this project and simply send a request to the API endpo
 #### Running by Command Prompt
 
 1. Open Command Prompt
-2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 3. Redirect to NumberToWords project directory by this command: `cd NumberToWords\NumberToWords`
 4. Build and run the project: `dotnet run`
    ![picture: run in cmd](../screenshot/screenshot-2.png)

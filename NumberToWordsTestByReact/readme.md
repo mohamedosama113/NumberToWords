@@ -26,7 +26,7 @@ The NumberToWords web API service is running.
 To run the application, follow these steps:
 
 1. Open Command Prompt
-2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 3. Redirect to NumberToWords project directory(`NumberToWords\NumberToWordsTestByReact`) by this command: `cd NumberToWords\NumberToWordsTestByReact`
 4. Install the dependencies using `npm install` or `yarn install`.
 5. Start the application using `npm start` or `yarn start`.

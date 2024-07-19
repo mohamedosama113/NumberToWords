@@ -23,7 +23,7 @@ To use this project, follow these steps:
 
 #### Running by Visual Studio
 
-1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+1. Run this command in Command Prompt to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 2. Open the solution in Visual Studio: `NumberToWords.sln`
 3. Press hotkey to build the project: `Ctrl+Shift+B`
 4. Run the unit tests by clicking the **Test** > **Run All Tests**.
@@ -32,7 +32,7 @@ To use this project, follow these steps:
 #### Running by Command Prompt
 
 1. Open Command Prompt
-2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/Number-To-Words.git`
+2. Run this command to clone the repository: `git clone https://github.com/SNARRANS/NumberToWords.git`
 3. Redirect to NumberToWordsTest project directory by this command: `cd NumberToWords\NumberToWordsTest`
 4. Build and run the project: `dotnet test`
    ![picture: run in cmd](../screenshot/screenshot-5.png)
