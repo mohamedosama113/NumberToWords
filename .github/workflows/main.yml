@@ -33,5 +33,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/num2words:latest
             docker stop num2words || true
-            docker rm num2words || false
+            docker rm num2words || true
             docker run -d -p 80:80 -p 443:443 --name num2words ${{ secrets.DOCKERHUB_USERNAME }}/num2words:latest
