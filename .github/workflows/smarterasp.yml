@@ -28,8 +28,8 @@ jobs:
       - name: Deploy to Simply
         uses: talunzhang/auto-web-deploy@v1.0.1
         with:
-          website-name: linda10-001-site1
+          website-name: ${{ secrets.WEBSITE_NAME }}
           server-computer-name: https://win8128.site4now.net:8172
-          server-username: linda10-001
-          server-password: Linda@10
+          server-username: ${{ secrets.SERVER_USERNAME }}
+          server-password: ${{ secrets.SERVER_PASSWORD }}
           target-delete: true
