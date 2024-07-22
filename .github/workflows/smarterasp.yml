@@ -1,4 +1,4 @@
-name: Build, publish and deploy project to Simply
+name: Deploy2
 
 on: [push]
 
