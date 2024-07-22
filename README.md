@@ -11,7 +11,9 @@ ASP.NET Core 8.0 Web API that converts numerical input into words and passes the
 3. Open each project folder readme.md, it will guide you step by step
 4. Open the screenshot folder and it will helps you in a picture
 
-5. CI/CD pipeline only a file and ready to be changed for automated deployment to physical servers or cloud computing
+5. CI/CD pipeline only a file and ready to be changed for automated deployment to physical servers or cloud computing. FOr this CI/CD, browse here - http://linda10-001-site1.atempurl.com/api/NumberToWords?number=456
+   ![picture: run in cmd](../screenshot/screenshot-9.png)
+
 6. Front-end technology such as Angular, React, Next.js and others can call this .NET Back-end Convert Numerical functions
 7. Good start for beginners learning .NET Back-end Convert Numerical functions using ASP.NET Core 8.0 Web API
 
