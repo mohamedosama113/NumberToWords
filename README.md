@@ -6,7 +6,7 @@ ASP.NET Core 8.0 Web API that converts numerical input into words and passes the
 
 ## Description
 
-1. This project con tains .NET Back-end Convert Numerical functions, Implementing Unit Tests, Testing via Console-based application and Front-end using React to call .NET Back-end Convert Numerical functions
+1. This project contains .NET Back-end Convert Numerical functions, Implementing Unit Tests, Testing via Console-based application and Front-end using React to call .NET Back-end Convert Numerical functions
 2. Each project folder contains its own readme.md
 3. Open each project folder readme.md, it will guide you step by step
 4. Open the screenshot folder and it will helps you in a picture
