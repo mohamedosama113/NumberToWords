@@ -51,7 +51,7 @@ jobs:
       uses: appleboy/scp-action@v0.1.7
       with:
         host: 107.20.103.164
-        username: ec2-user
+        username: root
         port: 22
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "./NumberToWordsTestByConsole/out/*"
