@@ -24,7 +24,7 @@ jobs:
     # Build Project 1 NumberToWords
     - name: Build Project1 NumberToWords
       run: |
-        cd /NumberToWords
+        cd /NumberToWords/NumberToWords/NumberToWords
         dotnet run
         
 
