@@ -47,13 +47,16 @@ jobs:
         ls
 
 
-    - name: Deploy Project4
-      run: |
-        cd NumberToWordsTestByConsole
-        echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
-        chmod 600 private_key
-        ls
-        sudo scp -i private_key -r -o StrictHostKeyChecking=no out/* ec2@107.20.103.164:/
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 107.20.103.164
+        username: ec2-user
+        port: 22
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "./NumberToWordsTestByConsole/out/*"
+        target: /
+          #sudo scp -i private_key -r -o StrictHostKeyChecking=no out/* ec2@107.20.103.164:/
        
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
