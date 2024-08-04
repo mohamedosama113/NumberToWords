@@ -70,6 +70,7 @@ jobs:
 
     - name: Deploy repo1
       run: |
+        cd NumberToWordsTestByConsole
         ls
        #scp -r -o StrictHostKeyChecking=no ./NumberToWordsTest/NumberToWordsTestByConsole/out/* ec2-user@107.20.103.164:${{ env.DEPLOY_PATH }}/
 
