@@ -69,15 +69,13 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
-        script: mkdir hello
-      #run: |
-       # echo "$SSH_PRIVATE_KEY" > private_key
-        #chmod 600 private_key
-        #scp -i private_key -r NumberToWords/out/* $SSH_USERNAME@$SSH_HOST:/
-        #scp -i private_key -r NumberToWordsTest/out/* $SSH_USERNAME@$SSH_HOST:/test
-        #scp -i private_key -r NumberToWordsTestByConsole/out/* $SSH_USERNAME@$SSH_HOST:/console
-        #scp -i private_key -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/react
-
+        script: |
+          echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
+          chmod 600 private_key
+          scp -i private_key -r NumberToWords/out/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/
+          scp -i private_key -r NumberToWordsTest/out/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/test
+          scp -i private_key -r NumberToWordsTestByConsole/out/* ${{ secrets.SSH_USERNAME }}${{ secrets.SSH_HOST }}:/console
+          scp -i private_key -r NumberToWordsTestByReact/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/react
 
 
         
