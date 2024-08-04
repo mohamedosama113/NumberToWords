@@ -61,21 +61,17 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-
-    - name: Deploy to server
-      uses: appleboy/ssh-action@v1.0.3
+    - name: Prepare SSH key
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22
-        script: |
-          echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
-          chmod 600 private_key
-          scp -i private_key -r NumberToWords/out/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/
-          scp -i private_key -r NumberToWordsTest/out/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/test
-          scp -i private_key -r NumberToWordsTestByConsole/out/* ${{ secrets.SSH_USERNAME }}${{ secrets.SSH_HOST }}:/console
-          scp -i private_key -r NumberToWordsTestByReact/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/react
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy repo1
+      run: |
+        scp -r -o StrictHostKeyChecking=no ./NumberToWordsTestByConsole/out/* ec2-user@107.20.103.164:${{ env.DEPLOY_PATH }}/
+
+      
+
 
 
         
