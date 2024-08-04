@@ -37,12 +37,16 @@ jobs:
         dotnet publish ./ --configuration Release --output ./out
 
     # Build Project 3 NumberToWordsTestByConsole
-    - name: Build Project3 NumberToWordsTestByConsole
+    - name: Build & deploy Project3 NumberToWordsTestByConsole
+      env: 
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         cd NumberToWordsTestByConsole 
         dotnet restore
         dotnet publish ./ --configuration Release --output ./out
         ls
+        scp -r -o StrictHostKeyChecking=no ./out/* ec2-user@107.20.103.164:/
+
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
@@ -67,7 +71,7 @@ jobs:
       run: |
         cd NumberToWordsTestByConsole
         ls
-       #scp -r -o StrictHostKeyChecking=no ./NumberToWordsTest/NumberToWordsTestByConsole/out/* ec2-user@107.20.103.164:${{ env.DEPLOY_PATH }}/
+      # scp -r -o StrictHostKeyChecking=no ./NumberToWordsTest/NumberToWordsTestByConsole/out/* ec2-user@107.20.103.164:${{ env.DEPLOY_PATH }}/
 
       
 
