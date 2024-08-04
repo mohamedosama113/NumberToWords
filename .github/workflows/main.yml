@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Check out the repository
@@ -26,20 +26,20 @@ jobs:
     - name: Build Project1 NumberToWords
       run: |
         cd NumberToWords
-        dotnet run &
+        dotnet run & --output ./out
         
 
     # Build Project 2 NumberToWordsTest
     - name: Build Project2 NumberToWordsTest
       run: |
         cd NumberToWordsTest
-        dotnet test &
+        dotnet test & --output ./out
 
     # Build Project 3 NumberToWordsTestByConsole
     - name: Build Project3 NumberToWordsTestByConsole
       run: |
         cd NumberToWordsTestByConsole 
-        dotnet run &
+        dotnet run & --output ./out
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
@@ -47,7 +47,7 @@ jobs:
         npm install &
         npm start &
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
 
     steps:
@@ -72,9 +72,12 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
-          scp -i private_key -r out/* $SSH_USERNAME@$SSH_HOST:/numbertowords/
+          scp -i private_key -r ./NumberToWords/out $SSH_USERNAME@$SSH_HOST:/project/
+          scp -i private_key -r ./NumberToWordsTest/out $SSH_USERNAME@$SSH_HOST:/project/
+          scp -i private_key -r ./NumberToWordsTestByConsole/ $SSH_USERNAME@$SSH_HOST:/project/
 
-        continue-on-error: true
+
+        
 
     - name: Notify on failure
       if: failure()
