@@ -65,6 +65,7 @@ jobs:
      # run: dotnet publish NumberToWords/NumberToWords.csproj -c Release -o out
 
     - name: Deploy to server
+      uses: appleboy/ssh-action@v1.0.3
       env:
         USERNAME: ${{ secrets.USERNAME }}
         HOST: ${{ secrets.HOST }}
