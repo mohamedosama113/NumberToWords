@@ -65,13 +65,13 @@ jobs:
      # run: dotnet publish NumberToWords/NumberToWords.csproj -c Release -o out
 
     - name: Deploy to server
-      uses: appleboy/ssh-action@v0.1.2
+      uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
         port: 2201
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
+        script: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
           scp -i private_key -r ./NumberToWords/out $SSH_USERNAME@$SSH_HOST:/project/
