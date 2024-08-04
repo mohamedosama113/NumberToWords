@@ -25,20 +25,20 @@ jobs:
     - name: Build Project1 NumberToWords
       run: |
         cd NumberToWords
-        dotnet run
+        dotnet run &
         
 
     # Build Project 2 NumberToWordsTest
     - name: Build Project2 NumberToWordsTest
       run: |
         cd NumberToWordsTest
-        dotnet test
+        dotnet test &
 
     # Build Project 3 NumberToWordsTestByConsole
     - name: Build Project3 NumberToWordsTestByConsole
       run: |
         cd NumberToWordsTestByConsole 
-        dotnet run
+        dotnet run &
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
