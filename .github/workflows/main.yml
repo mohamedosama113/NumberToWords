@@ -70,9 +70,12 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         HOST: ${{ secrets.HOST }}
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      with:
-        source: './NumberToWordsTestByConsole/out'
-        target: '/'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh/id_rsa
+          ssh-keyscan -H domain.com >> ~/.ssh/known_hosts
+          scp -o StrictHostKeyChecking=no -r ./NumberToWordsTestByConsole/out/* ${{ env.USERNAME }}@domain.com:/
 
 
 
