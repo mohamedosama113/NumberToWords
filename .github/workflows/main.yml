@@ -31,18 +31,18 @@ jobs:
     # Build Project 2 NumberToWordsTest
     - name: Build Project2 NumberToWordsTest
       run: |
-        cd /NumberToWordsTest
+        cd NumberToWordsTest
         dotnet test
 
     # Build Project 3 NumberToWordsTestByConsole
     - name: Build Project3 NumberToWordsTestByConsole
       run: |
-        cd /NumberToWordsTestByConsole 
+        cd NumberToWordsTestByConsole 
         dotnet run
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
-        cd /NumberToWordsTestByReact
+        cd NumberToWordsTestByReact
         npm install
         npm start
   deploy:
