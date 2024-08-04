@@ -10,17 +10,15 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Check out the repository
       uses: actions/checkout@v4
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v3
-      env:
-        DOTNET_INSTALL_DIR: "./.dotnet"
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
     - name: Check IP
       run: curl https://api.ipify.org
     # Build Project 1 NumberToWords
@@ -48,7 +46,7 @@ jobs:
         npm install &
         npm start &
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
@@ -57,10 +55,8 @@ jobs:
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v3
-      env:
-        DOTNET_INSTALL_DIR: "./.dotnet"
       with:
-        dotnet-version: '6.0.1'
+        dotnet-version: '8.0.x'
 
     #- name: Build the API project
      # run: dotnet publish NumberToWords/NumberToWords.csproj -c Release -o out
