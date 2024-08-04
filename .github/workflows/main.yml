@@ -11,14 +11,14 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    env:
-      DOTNET_INSTALL_DIR: "./.dotnet"
     steps:
     - name: Check out the repository
       uses: actions/checkout@v4
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v3
+      env:
+        DOTNET_INSTALL_DIR: "./.dotnet"
       with:
         dotnet-version: '3.1.x'
     - name: Check IP
