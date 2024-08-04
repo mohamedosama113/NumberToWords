@@ -46,15 +46,14 @@ jobs:
         dotnet publish ./ --configuration Release --output ./out
         ls
 
-    - name: Prepare SSH key
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy Project4
       run: |
         cd NumberToWordsTestByConsole
-        sudo scp -r -o StrictHostKeyChecking=no ./out/* root@107.20.103.164:/
+        echo "{{ secrets.SSH_PRIVATE_KEY }} > private_key
+        chmod 600 private_key
+        sudo scp -i private_key -r -o StrictHostKeyChecking=no out/* ec2@107.20.103.164:/
+       
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
