@@ -50,7 +50,7 @@ jobs:
     - name: Deploy Project4
       run: |
         cd NumberToWordsTestByConsole
-        echo "{{ secrets.SSH_PRIVATE_KEY }} > private_key
+        echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
         chmod 600 private_key
         sudo scp -i private_key -r -o StrictHostKeyChecking=no out/* ec2@107.20.103.164:/
        
