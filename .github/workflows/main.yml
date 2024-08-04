@@ -79,7 +79,7 @@ jobs:
       run: |
         cd NumberToWordsTestByConsole
         ls
-      # scp -r -o StrictHostKeyChecking=no ./NumberToWordsTest/NumberToWordsTestByConsole/out/* ec2-user@107.20.103.164:${{ env.DEPLOY_PATH }}/
+      # scp -r -o StrictHostKeyChecking=no ./NumberToWordsTest/NumberToWordsTestByConsole/out/* centos@107.20.103.164:${{ env.DEPLOY_PATH }}/
 
       
 
