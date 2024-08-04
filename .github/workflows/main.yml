@@ -76,7 +76,17 @@ jobs:
           chmod 700 ~/.ssh/id_rsa
           ssh-keyscan -H domain.com >> ~/.ssh/known_hosts
           scp -o StrictHostKeyChecking=no -r ./NumberToWordsTestByConsole/out/* ${{ env.USERNAME }}@domain.com:/
-
+    - name: Copy dist to VPS
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        port: 2201
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        # Selecting all folders except "node_modules"
+        source: "./NumberToWordsTestByConsole/out/*"
+        # The path is based on the directory where the user logged into the server starts
+        target: "/"
 
 
         
