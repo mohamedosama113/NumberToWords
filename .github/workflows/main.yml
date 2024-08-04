@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/setup-dotnet@main
+      uses: actions/checkout@v4
 
     - name: Set up .NET Core
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@main
       with:
         dotnet-version: '8.0.x'
     - name: Check IP
