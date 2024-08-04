@@ -11,7 +11,8 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
+    env:
+      DOTNET_INSTALL_DIR: "./.dotnet"
     steps:
     - name: Check out the repository
       uses: actions/checkout@v4
