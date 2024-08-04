@@ -42,12 +42,14 @@ jobs:
         cd NumberToWordsTestByConsole 
         dotnet restore
         dotnet publish ./ --configuration Release --output ./out
+        ls
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
         cd NumberToWordsTestByReact
         npm install &
         npm start &
+        ls
   deploy:
     runs-on: ubuntu-latest
     needs: build
