@@ -63,15 +63,13 @@ jobs:
 
 
     - name: Deploy to server
-      uses: appleboy/scp-action@v0.1.7
+      uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        source: "./NumberToWords/out/*"
-        target: /
-      
+        port: 22
+        script: mkdir hello
       #run: |
        # echo "$SSH_PRIVATE_KEY" > private_key
         #chmod 600 private_key
