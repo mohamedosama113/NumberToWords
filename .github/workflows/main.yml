@@ -64,23 +64,22 @@ jobs:
     #- name: Build the API project
      # run: dotnet publish NumberToWords/NumberToWords.csproj -c Release -o out
 
-    - name: Deploy to server
-      uses: appleboy/ssh-action@v1.0.3
-      env:
-        USERNAME: ${{ secrets.USERNAME }}
-        HOST: ${{ secrets.HOST }}
-        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 700 ~/.ssh/id_rsa
-          ssh-keyscan -H domain.com >> ~/.ssh/known_hosts
-          scp -o StrictHostKeyChecking=no -r ./NumberToWordsTestByConsole/out/* ${{ env.USERNAME }}@domain.com:/
+ #   - name: Deploy to server
+  #    uses: appleboy/ssh-action@v1.0.3
+   #   env:
+    #    HOST: ${{ secrets.HOST }}
+    #    KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #    run: |
+    #      mkdir -p ~/.ssh
+     #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+     #     chmod 700 ~/.ssh/id_rsa
+     #     ssh-keyscan -H domain.com >> ~/.ssh/known_hosts
+      #    scp -o StrictHostKeyChecking=no -r ./NumberToWordsTestByConsole/out/* ${{ env.USERNAME }}@${{ env.HOST }}:/
     - name: Copy dist to VPS
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
+        username: ${{ secrets.SSH_USERNAME }}
         port: 2201
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         # Selecting all folders except "node_modules"
