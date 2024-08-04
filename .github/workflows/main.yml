@@ -63,17 +63,22 @@ jobs:
 
 
     - name: Deploy to server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-      run: |
-        echo "$SSH_PRIVATE_KEY" > private_key
-        chmod 600 private_key
-        scp -i private_key -r NumberToWords/out/* $SSH_USERNAME@$SSH_HOST:/
-        scp -i private_key -r NumberToWordsTest/out/* $SSH_USERNAME@$SSH_HOST:/test
-        scp -i private_key -r NumberToWordsTestByConsole/out/* $SSH_USERNAME@$SSH_HOST:/console
-        scp -i private_key -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/react
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        source: "./NumberToWords/out/*"
+        target: /
+      
+      #run: |
+       # echo "$SSH_PRIVATE_KEY" > private_key
+        #chmod 600 private_key
+        #scp -i private_key -r NumberToWords/out/* $SSH_USERNAME@$SSH_HOST:/
+        #scp -i private_key -r NumberToWordsTest/out/* $SSH_USERNAME@$SSH_HOST:/test
+        #scp -i private_key -r NumberToWordsTestByConsole/out/* $SSH_USERNAME@$SSH_HOST:/console
+        #scp -i private_key -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/react
 
 
 
