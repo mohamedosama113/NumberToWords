@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up .NET Core
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
     - name: Check IP
@@ -52,7 +52,7 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v4
