@@ -61,31 +61,20 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    #- name: Build the API project
-     # run: dotnet publish NumberToWords/NumberToWords.csproj -c Release -o out
 
- #   - name: Deploy to server
-  #    uses: appleboy/ssh-action@v1.0.3
-   #   env:
-    #    HOST: ${{ secrets.HOST }}
-    #    KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-    #    run: |
-    #      mkdir -p ~/.ssh
-     #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-     #     chmod 700 ~/.ssh/id_rsa
-     #     ssh-keyscan -H domain.com >> ~/.ssh/known_hosts
-      #    scp -o StrictHostKeyChecking=no -r ./NumberToWordsTestByConsole/out/* ${{ env.USERNAME }}@${{ env.HOST }}:/
-    - name: Copy dist to VPS
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        port: 2201
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        # Selecting all folders except "node_modules"
-        source: "./NumberToWordsTestByConsole/out/*"
-        # The path is based on the directory where the user logged into the server starts
-        target: "/"
+    - name: Deploy to server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        scp -i private_key -r NumberToWords/out/* $SSH_USERNAME@$SSH_HOST:/
+        scp -i private_key -r NumberToWordsTest/out/* $SSH_USERNAME@$SSH_HOST:/test
+        scp -i private_key -r NumberToWordsTestByConsole/out/* $SSH_USERNAME@$SSH_HOST:/console
+        scp -i private_key -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/react
+
 
 
         
