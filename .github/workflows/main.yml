@@ -54,7 +54,7 @@ jobs:
     - name: Deploy Project4
       run: |
         cd NumberToWordsTestByConsole
-        sudo scp -r -o StrictHostKeyChecking=no ./out/* ec2-user@107.20.103.164:/
+        sudo scp -r -o StrictHostKeyChecking=no ./out/* root@107.20.103.164:/
     # Build Project 4 NumberToWordsTestByReact
     - name: Build Project4 NumberToWordsTestByReact
       run: |
