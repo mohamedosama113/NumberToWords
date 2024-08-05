@@ -21,7 +21,9 @@ jobs:
 
     - name: Copy repository to RHEL server
       run: |
-        scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/home/${{ secrets.SSH_USER }}/NumberToWords
+        echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
+        chmod 400 private_key
+        scp -i private_key -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/home/${{ secrets.SSH_USER }}/NumberToWords
 
     - name: Execute build on RHEL server
       run: |
