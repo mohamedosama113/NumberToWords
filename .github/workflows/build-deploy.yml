@@ -41,16 +41,11 @@ jobs:
     - name: Upload build output to server
       run: |
         echo "Deploying project from ${{ matrix.project-folder }}/publish to $SSH_HOST"
-        scp -o StrictHostKeyChecking=no -i $SSH_KEY -r ${{ matrix.project-folder }}/publish/* $SSH_USERNAME@$SSH_HOST:/path/to/deploy/${{ matrix.project-folder }}
-
-    - name: Restart Service
-      run: |
-        echo "Restarting service on $SSH_HOST"
-        ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USERNAME@$SSH_HOST 'sudo systemctl restart your_service_name'
+        sudo scp -o StrictHostKeyChecking=no -i $SSH_KEY -r ${{ matrix.project-folder }}/publish/* $SSH_USERNAME@$SSH_HOST:/path/to/deploy/${{ matrix.project-folder }}
 
   build-react:
     runs-on: ubuntu-latest
-    needs: build-dotnet
+
 
     env:
       SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -81,4 +76,4 @@ jobs:
     - name: Upload React build output to server
       run: |
         echo "Deploying React build output to $SSH_HOST"
-        scp -o StrictHostKeyChecking=no -i $SSH_KEY -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/path/to/deploy/project4
+        sudo scp -o StrictHostKeyChecking=no -i $SSH_KEY -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:/path/to/deploy/project4
