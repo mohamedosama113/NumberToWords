@@ -36,7 +36,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /home/${{ secrets.SSH_USER }}/NumberToWords/NumberToWords
+          cd NumberToWords
           # Execute build commands for NumberToWords
           dotnet build &
           dotnet publish --configuration Release --output ./publish
