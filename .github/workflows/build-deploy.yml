@@ -23,9 +23,7 @@ jobs:
         echo "$SSH_KEY" > private_key
         chmod 400 private_key
         sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
-        sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
-        rm private_key
-        EOF
+
         
 
         
@@ -56,3 +54,10 @@ jobs:
         # Execute build commands for Project4
         npm start &
         EOF
+
+        - name: Clean up on failure
+          if: failure()
+          run: |
+          sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
+          rm private_key
+          EOF
