@@ -18,7 +18,7 @@ jobs:
       run: |
         echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
         chmod 400 private_key
-        sudo scp -o StrictHostKeyChecking=no -i private_key -r .  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/NumberToWords
+        sudo scp -o StrictHostKeyChecking=no -i private_key -r NumberToWords  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/NumberToWords
 
     - name: Execute build on RHEL server
       run: |
