@@ -24,6 +24,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "./*"
         target: /home/$SSH_USER/NumberToWords
+        overwrite: true
         
     #- name: Copy repository to RHEL server
       #run: |
