@@ -39,18 +39,18 @@ jobs:
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords
           # Execute build commands for NumberToWords
           dotnet build &
-          dotnet publish --configuration Release --output ./publish
+         # dotnet publish --configuration Release --output ./publish
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTest
           # Execute build commands for Project2
           dotnet build &
-          dotnet publish --configuration Release --output ./publish
+          #dotnet publish --configuration Release --output ./publish
           
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByConsole
           # Execute build commands for Project3
           dotnet build &
-          dotnet publish --configuration Release --output ./publish
+          #dotnet publish --configuration Release --output ./publish
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByReact
           # Execute build commands for Project4
