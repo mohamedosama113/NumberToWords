@@ -16,13 +16,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "*"
+        target: /home/$SSH_USER/NumberToWords
         
-    - name: Copy repository to RHEL server
-      run: |
-        echo "$SSH_KEY" > private_key
-        chmod 400 private_key
-        sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
+    #- name: Copy repository to RHEL server
+      #run: |
+        #echo "$SSH_KEY" > private_key
+        #chmod 400 private_key
+       # sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
 
         
 
