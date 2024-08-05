@@ -14,6 +14,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Copy repository to RHEL server
+      working-directory: NumberToWordsTestByReact
       run: |
         echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
         chmod 400 private_key
