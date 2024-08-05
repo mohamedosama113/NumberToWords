@@ -60,7 +60,7 @@ jobs:
 
       run: |
         echo "$SSH_KEY" > private_key
-        chmod 400 private_key
+        sudo chmod 400 private_key
         sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
         rm private_key
         EOF
