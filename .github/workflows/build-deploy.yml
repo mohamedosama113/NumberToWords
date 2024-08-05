@@ -40,22 +40,36 @@ jobs:
           # Execute build commands for NumberToWords
           dotnet build &
           dotnet publish --configuration Release --output ./publish
+          cd ..
 
-          cd /home/${{ secrets.SSH_USER }}/NumberToWords/NumberToWordsTest
+          cd NumberToWordsTest
           # Execute build commands for Project2
           dotnet build &
           dotnet publish --configuration Release --output ./publish
+          cd ..
 
-          cd /home/${{ secrets.SSH_USER }}/NumberToWords/NumberToWordsTestByConsole
+          cd NumberToWordsTestByConsole
           # Execute build commands for Project3
           dotnet build &
           dotnet publish --configuration Release --output ./publish
+          cd ..
 
-          cd /home/${{ secrets.CENTOS_USER }}/NumberToWords/NumberToWordsTestByReact
+          cd NumberToWordsTestByReact
           # Execute build commands for Project4
           npm install &
           npm start &
           
+    - name: Clean up private_key
+      if: success()
+
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd NumberToWords
+          rm private_key
 
     - name: Clean up on failure
       if: failure()
