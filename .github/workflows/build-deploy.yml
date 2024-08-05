@@ -9,15 +9,13 @@ jobs:
   deploy_and_build:
     name: Deploy and Build on RHEL server
     runs-on: ubuntu-latest
-    env:
-      SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Copy repository to RHEL server
       run: |
-        echo "$SSH_KEY" > private_key
+        echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
         chmod 400 private_key
         scp -i private_key -r ./NumberToWords ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/home/${{ secrets.SSH_USER }}/NumberToWords
 
