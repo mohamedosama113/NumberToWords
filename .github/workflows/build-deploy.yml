@@ -17,11 +17,9 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Copy repository to RHEL server
-      working-directory: NumberToWordsTestByReact
       run: |
-        echo ${{ secrets.SSH_PRIVATE_KEY }} > private_key
-        chmod 400 private_key
         ls
+        
 
     - name: Execute build on RHEL server
       run: |
