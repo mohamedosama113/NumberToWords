@@ -22,7 +22,8 @@ jobs:
       run: |
         echo "$SSH_KEY" > private_key
         chmod 400 private_key
-        sudo scp -o StrictHostKeyChecking=no -i private_key -r . $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
+        sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
+        
 
         
 
