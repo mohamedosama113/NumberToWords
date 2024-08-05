@@ -18,7 +18,8 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Copy repository to RHEL server
       run: |
-        ls
+        scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/NumberToWords
+
         
 
     - name: Execute build on RHEL server
