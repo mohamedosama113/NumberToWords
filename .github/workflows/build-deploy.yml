@@ -58,10 +58,11 @@ jobs:
     - name: Clean up on failure
       if: failure()
 
-      run: |
-        echo "$SSH_KEY" > private_key
-        chmod 400 private_key
-        sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
-        ls
-        rm private_key
-        EOF
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }
+        script: |
+          cd NumberToWords
+          rm -rf *
