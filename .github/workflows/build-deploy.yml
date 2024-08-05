@@ -73,7 +73,7 @@ jobs:
       working-directory: NumberToWordsTestByReact
       run: |
         npm install &
-        npm run build &
+        npm run build
 
     - name: Upload React build output to server
       run: |
