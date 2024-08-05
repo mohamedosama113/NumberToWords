@@ -55,9 +55,9 @@ jobs:
         npm start &
         EOF
 
-        - name: Clean up on failure
-          if: failure()
-          run: |
-          sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
-          rm private_key
-          EOF
+    - name: Clean up on failure
+      if: failure()
+      run: |
+        sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
+        rm private_key
+        EOF
