@@ -35,8 +35,8 @@ jobs:
       working-directory: ${{ matrix.project-folder }}
       run: |
         dotnet restore
-        dotnet build --configuration Release
-        dotnet publish --configuration Release --output ./publish
+        dotnet build &
+        dotnet publish --output ./publish
 
     - name: Upload build output to server
       run: |
@@ -50,14 +50,14 @@ jobs:
     env:
       SSH_HOST: ${{ secrets.SSH_HOST }}
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-      SSH_KEY: ${{ secrets.SSH_KEY }}
+      SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v3
       with:
         node-version: '14'
 
