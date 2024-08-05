@@ -36,25 +36,23 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd NumberToWords
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords
           # Execute build commands for NumberToWords
           dotnet build &
           dotnet publish --configuration Release --output ./publish
-          cd ..
 
-          cd NumberToWordsTest
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTest
           # Execute build commands for Project2
           dotnet build &
           dotnet publish --configuration Release --output ./publish
-          cd ..
+          
 
-          cd NumberToWordsTestByConsole
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByConsole
           # Execute build commands for Project3
           dotnet build &
           dotnet publish --configuration Release --output ./publish
-          cd ..
 
-          cd NumberToWordsTestByReact
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByReact
           # Execute build commands for Project4
           npm install &
           npm start &
