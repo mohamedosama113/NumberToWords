@@ -23,6 +23,7 @@ jobs:
        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         echo "$SSH_KEY" > private_key
+        chmod 400 private_key
         scp -o StrictHostKeyChecking=no -i private_key . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/NumberToWords
 
         
