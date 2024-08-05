@@ -53,6 +53,7 @@ jobs:
 
           cd /home/${{ secrets.CENTOS_USER }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for Project4
+          npm install &
           npm start &
           
 
