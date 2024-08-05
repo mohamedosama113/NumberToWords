@@ -22,7 +22,7 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "*"
+        source: "./*"
         target: /home/$SSH_USER/NumberToWords
         
     #- name: Copy repository to RHEL server
