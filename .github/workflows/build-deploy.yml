@@ -9,6 +9,9 @@ jobs:
   deploy_and_build:
     name: Deploy and Build on RHEL server
     runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SSH_USER: ${{  secrets.SSH_USERNAME }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -16,9 +19,6 @@ jobs:
 
         
     - name: Copy repository to RHEL server
-      env:
-       SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-       SSH_USER: ${{  secrets.SSH_USERNAME }}
       run: |
         echo "$SSH_KEY" > private_key
         chmod 400 private_key
@@ -57,7 +57,10 @@ jobs:
 
     - name: Clean up on failure
       if: failure()
+
       run: |
+        echo "$SSH_KEY" > private_key
+        chmod 400 private_key
         sudo ssh -i private_key $SSH_USER@${{ secrets.SSH_HOST }} << 'EOF'
         rm private_key
         EOF
