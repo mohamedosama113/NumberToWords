@@ -81,4 +81,4 @@ jobs:
         echo "Deploying project from ${{ matrix.project-folder }}/publish to $SSH_HOST"
         echo "$SSH_KEY" > private_key
         chmod 400 private_key
-        sudo scp -o StrictHostKeyChecking=no -i private_key -r NumberToWordsTestByReact/build/* $SSH_USERNAME@$SSH_HOST:~/${{ matrix.project-folder }}/build_output
+        sudo scp -o StrictHostKeyChecking=no -i private_key -r NumberToWordsTestByReact/build/static/* $SSH_USERNAME@$SSH_HOST:~/${{ matrix.project-folder }}/build_output
