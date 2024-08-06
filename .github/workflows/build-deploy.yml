@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWords
           # Execute build commands for NumberToWords
           dotnet build &
           dotnet publish --configuration Release --output ./publish
@@ -53,6 +53,7 @@ jobs:
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for Project4
+          rm package-lock.json
           npm install &
           npm start &
           
@@ -77,5 +78,5 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd NumberToWords
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords
           rm -rf *
