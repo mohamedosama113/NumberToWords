@@ -56,10 +56,10 @@ jobs:
           dotnet publish --configuration Release --output ./publish
           
 
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByConsole
+          #cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByConsole
           # Execute build commands for NumberToWordsTestByConsole
-          dotnet run --configuration Release --no-restore --quiet
-          dotnet publish --configuration Release --output ./publish
+          #dotnet run --configuration Release --no-restore --quiet
+          #dotnet publish --configuration Release --output ./publish
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for NumberToWordsTestByReact
