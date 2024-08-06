@@ -49,7 +49,7 @@ jobs:
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByConsole
           # Execute build commands for Project3
           dotnet build &
-          #dotnet publish --configuration Release --output ./publish
+          dotnet publish --configuration Release --output ./publish
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for Project4
