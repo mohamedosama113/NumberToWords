@@ -23,7 +23,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          sudo mkdir -p /NumberToWords
+          mkdir NumberToWords
     - name: Copy repository to RHEL server
       run: |
         echo "$SSH_KEY" > private_key
