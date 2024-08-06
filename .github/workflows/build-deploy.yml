@@ -64,4 +64,4 @@ jobs:
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for NumberToWordsTestByReact
           npm install
-          react-scripts start
+          npm run start > /dev/null &
