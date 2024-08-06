@@ -21,7 +21,7 @@ jobs:
       run: |
         echo "$SSH_KEY" > private_key
         chmod 400 private_key
-        sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/NumberToWords
+        sudo scp -o StrictHostKeyChecking=no -i private_key -r ./* $SSH_USER@${{ secrets.SSH_HOST }}:/home/$SSH_USER/
 
         
 
@@ -35,23 +35,23 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWords
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/
           # Execute build commands for NumberToWords
           dotnet build &
           dotnet publish --configuration Release --output ./publish
 
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTest
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTest
           # Execute build commands for Project2
           dotnet build &
           dotnet publish --configuration Release --output ./publish
           
 
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByConsole
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByConsole
           # Execute build commands for Project3
           dotnet build &
           dotnet publish --configuration Release --output ./publish
 
-          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
+          cd /home/${{ secrets.SSH_USERNAME }}/NumberToWordsTestByReact
           # Execute build commands for Project4
           rm package-lock.json
           npm install
