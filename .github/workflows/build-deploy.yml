@@ -61,7 +61,7 @@ jobs:
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for NumberToWordsTestByReact
           npm install
-          npm start &
+          react-scripts start
           
     - name: Clean up private_key
       if: success()
