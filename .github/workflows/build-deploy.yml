@@ -54,7 +54,7 @@ jobs:
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for Project4
           rm package-lock.json
-          npm install &
+          npm install
           npm start &
           
     - name: Clean up private_key
