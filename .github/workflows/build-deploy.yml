@@ -9,6 +9,8 @@ jobs:
   deploy_and_build:
     name: Deploy and Build on RHEL server
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     env:
       SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       SSH_USER: ${{  secrets.SSH_USERNAME }}
