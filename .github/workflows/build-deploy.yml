@@ -63,5 +63,6 @@ jobs:
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for NumberToWordsTestByReact
-          npm install --save-dev
+          npm install --save-dev @babel/plugin-proposal-private-property-in-object
+          npm install 
           npm run start > /dev/null &
