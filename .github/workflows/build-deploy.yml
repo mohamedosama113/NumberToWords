@@ -9,7 +9,7 @@ jobs:
   deploy_and_build:
     name: Deploy and Build on RHEL server
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     env:
       SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -63,6 +63,5 @@ jobs:
 
           cd /home/${{ secrets.SSH_USERNAME }}/NumberToWords/NumberToWordsTestByReact
           # Execute build commands for NumberToWordsTestByReact
-          npm install --save-dev @babel/plugin-proposal-private-property-in-object
           npm install 
-          npm run start > /dev/null &
+          npm start > /dev/null &
